@@ -6,8 +6,8 @@ declare global {
     }
 }
 
-const isBrowser = typeof window !== 'undefined' && typeof process === 'object';
-const isNode = typeof window === 'undefined' && typeof process !== 'object';
+const isBrowser = typeof window === 'object' && typeof process === 'undefined';
+const isNode = typeof window === 'undefined' && typeof process === 'object';
 
 if (isBrowser) {
     window.env = window.env || {};
@@ -65,7 +65,6 @@ const getGlobalObject = (): typeof window | typeof process | undefined => {
 
 export const load = async (path: string = 'application.env'): Promise<Env> => {
     const obj = await loadEnvObject(path);
-
     const globalObj = getGlobalObject();
     const env: Env = {
         ...globalObj?.env,
