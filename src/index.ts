@@ -36,7 +36,7 @@ const getGlobalObject = (): typeof window | typeof process | undefined => {
     }
 }
 
-export const load = async (path: string = 'app.env'): Promise<Env> => {
+export const load = async (path: string = 'application.env'): Promise<Env> => {
     const obj = await loadEnvObject(path);
 
     const globalObj = getGlobalObject();
