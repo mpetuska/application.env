@@ -6,7 +6,7 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
-  "license": "MIT",
+  "license": "Apache License 2.0",
   "files": ["build"],
   "scripts": {
     "build": "tsc",
