@@ -7,7 +7,9 @@
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
   "license": "Apache-2.0",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "scripts": {
     "build": "tsc",
     "prepack": "yarn build"
