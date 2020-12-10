@@ -6,12 +6,11 @@
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
-  "license": "Apache License 2.0",
+  "license": "Apache-2.0",
   "files": ["build"],
   "scripts": {
     "build": "tsc",
-    "prepack": "yarn build",
-    "prepublish": "yarn build"
+    "prepack": "yarn build"
   },
   "dependencies": {
     "envfile": "^6.14.0"
