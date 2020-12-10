@@ -1,4 +1,4 @@
-# app.env
+# js.env
 
 Small utility to load environment configurations that works for both, node and the browser.
 
