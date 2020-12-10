@@ -2,7 +2,7 @@
   "name": "js.env",
   "version": "1.0.0",
   "description": ".env file loader for node and browser",
-  "repository": "git@gitlab.com:martynas.petuska/app.env.git",
+  "repository": "git@gitlab.com:martynas.petuska/js.env.git",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
