@@ -36,9 +36,7 @@ const loadEnvObject = async (path: string): Promise<Env | undefined> => {
         const { loadEnvFile } = await import('./internal/node');
         loader = loadEnvFile;
     }
-    console.log({loader})
     const text = loader && await loader(path);
-    console.log({text, parsed: parse(text || '')});
     return text ? parse(text) : undefined;
 }
 
@@ -54,7 +52,6 @@ const getGlobalObject = (): typeof window | typeof process | undefined => {
 
 export const load = async (path: string = 'application.env'): Promise<Env> => {
     const obj = await loadEnvObject(path);
-    console.log({obj})
 
     const globalObj = getGlobalObject();
     const env: Env = {
