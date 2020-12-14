@@ -1,6 +1,6 @@
 {
   "name": "application.env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": ".env file loader for node and browser",
   "repository": "git@gitlab.com:martynas.petuska/application.env.git",
   "main": "common.js",

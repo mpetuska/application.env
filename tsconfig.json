@@ -9,5 +9,6 @@
     "sourceMap": true,
     "declarationMap": true
   },
-  "exclude": []
+  "exclude": [],
+  "include": ["src"]
 }
