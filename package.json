@@ -3,12 +3,14 @@
   "version": "1.0.0",
   "description": ".env file loader for node and browser",
   "repository": "git@gitlab.com:martynas.petuska/application.env.git",
-  "main": "build/index.js",
+  "main": "common.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
   "license": "Apache-2.0",
   "files": [
-    "build"
+    "**/*.js",
+    "**/*.d.ts",
+    "**/*.map"
   ],
   "scripts": {
     "build": "tsc",

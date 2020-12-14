@@ -3,3 +3,6 @@ build/
 .vscode/
 node_modules/
 *.tgz
+*.js
+*.d.ts
+*.map
