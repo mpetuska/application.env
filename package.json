@@ -1,8 +1,8 @@
 {
   "name": "application.env",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "description": ".env file loader for node and browser",
-  "repository": "git@github.com:mpetuska/application.env.git",
+  "repository": "github:mpetuska/application.env",
   "main": "common.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
