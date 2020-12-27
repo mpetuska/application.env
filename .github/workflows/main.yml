@@ -26,17 +26,12 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.1.4
         with:
-          # Set always-auth in npmrc
-          always-auth: true
-          # Version Spec of the version to use.  Examples: 12.x, 10.15.1, >=10.15.0
-          node-version: 14.x
-          # Optional registry to set up for auth. Will set the registry in a project level .npmrc and .yarnrc file, and set up auth to read in from env.NODE_AUTH_TOKEN
-          registry-url: https://npm.pkg.github.com
-          # Optional scope for authenticating against scoped registries
-          scope: mpetuska
-      
+          node-version: 14      
       - name: Install
         run: yarn install
-      # Runs a single command using the runners shell
-      - name: Publish to GitHub
-        run: yarn publish --access public
+      - uses: JS-DevTools/npm-publish@v1
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          registry: https://npm.pkg.github.com
+          access: public
+          check-version: false
