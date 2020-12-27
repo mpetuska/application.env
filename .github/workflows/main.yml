@@ -34,7 +34,9 @@ jobs:
           registry-url: https://npm.pkg.github.com
           # Optional scope for authenticating against scoped registries
           scope: mpetuska
-
+      
+      - name: Install
+        run: yarn install
       # Runs a single command using the runners shell
       - name: Publish to GitHub
-        run: npm publish --access public
+        run: yarn publish --access public
