@@ -16,11 +16,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    # Setup .npmrc file to publish to GitHub Packages
+    # Setup .npmrc file to publish to npm
     - uses: actions/setup-node@v1
       with:
-        node-version: 14
-    - run: yarn install
-    - run: npm publish --registry=https://npm.pkg.github.com
+        node-version: '12.x'
+        registry-url: 'https://registry.npmjs.org'
+    - run: yarn
+    - run: yarn publish
       env:
-        NODE_AUTH_TOKEN: ${{ github.token }}
+        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
