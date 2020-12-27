@@ -19,9 +19,9 @@ jobs:
     # Setup .npmrc file to publish to GitHub Packages
     - uses: actions/setup-node@v1
       with:
-        node-version: '12.x'
+        node-version: 14
         registry-url: 'https://npm.pkg.github.com'
     - run: yarn install
-    - run: npm publish
+    - run: npm publish --registry=https://npm.pkg.github.com
       env:
         NODE_AUTH_TOKEN: ${{ github.token }}
