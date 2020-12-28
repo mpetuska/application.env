@@ -6,3 +6,11 @@ node_modules/
 *.js
 *.d.ts
 *.map
+
+.yarn/*
+!.pnp.js
+!.yarn/cache
+!.yarn/releases
+!.yarn/plugins
+!.yarn/sdks
+!.yarn/versions
