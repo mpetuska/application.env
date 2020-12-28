@@ -1,8 +1,8 @@
 {
   "name": "application.env",
-  "version": "1.0.1",
+  "version": "1.0.4",
   "description": ".env file loader for node and browser",
-  "repository": "git@github.com:mpetuska/application.env.git",
+  "repository": "github:mpetuska/application.env",
   "main": "common.js",
   "types": "build/index.d.ts",
   "author": "Martynas Petuška",
@@ -10,13 +10,15 @@
   "files": [
     "**/*.js",
     "**/*.d.ts",
-    "**/*.map"
+    "**/*.map",
+    "!.pnp.js",
+    "!.yarn"
   ],
   "scripts": {
+    "vscode": "yarn dlx @yarnpkg/pnpify --sdk vscode",
     "build": "tsc",
     "prepack": "yarn build"
   },
-  "dependencies": {},
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.1",
     "@types/node": "^14.14.12",
