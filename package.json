@@ -1,6 +1,6 @@
 {
   "name": "application.env",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": ".env file loader for node and browser",
   "repository": {
     "type": "git",

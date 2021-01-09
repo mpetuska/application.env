@@ -1,5 +1,5 @@
 import fs from "fs";
-import { _appendEnv, DEFAULT_PATH, Env, EnvLoader } from "./common";
+import { _appendEnv, DEFAULT_PATH, EnvLoader } from "./common";
 import { defaultLoadOptions, LoadOptions } from "./LoadOptions";
 
 export const loadSync = (

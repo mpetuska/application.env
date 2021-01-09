@@ -1,9 +1,16 @@
 import { LoadOptions } from "./LoadOptions";
 
-export type Env = Record<string, string | undefined>;
 export type EnvLoader = (path?: string, options?: LoadOptions) => Promise<Env>;
 type GlobalObject = typeof window | typeof process;
 declare global {
+  namespace ApplicationEnv {
+    /**
+     * To be augmented by consumer projects
+     */
+    // eslint-disable-next-line no-unused-vars
+    interface Env {}
+  }
+  type Env = Record<string, string | undefined> & ApplicationEnv.Env;
   // eslint-disable-next-line no-unused-vars
   interface Window {
     env: Env;
@@ -17,8 +24,7 @@ declare global {
   }
 }
 
-const isBrowser = typeof window === "object" && typeof process === "undefined";
-const isNode = typeof window === "undefined" && typeof process === "object";
+const isNode = typeof window === "undefined";
 export const DEFAULT_PATH = "application.env";
 
 export const parseEnv = (dotEnvStr: string): Env => {
@@ -54,11 +60,13 @@ export const load = async (
   path: string = DEFAULT_PATH,
   options?: LoadOptions
 ): Promise<Env> => {
-  let loader: undefined | EnvLoader = undefined;
-  if (isBrowser && !isNode) {
-    loader = (await import("./browser")).load;
-  } else if (isNode && !isBrowser) {
+  let loader: undefined | EnvLoader;
+  if (isNode) {
+    console.debug("NodeJS runtime");
     loader = (await import("./node")).load;
+  } else {
+    console.debug("Browser runtime");
+    loader = (await import("./browser")).load;
   }
   return loader ? loader(path, options) : {};
 };
