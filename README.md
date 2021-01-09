@@ -10,8 +10,8 @@ import { load } from 'application.env';
 
 load().then((env) => console.log('Env ready', env));
 ```
-The above will load `application.env` file and append it to global object (`proccess.env` for node and `window.env` for browser).
-`load()` takes an optional argument specifying custom path to the file (defaults to `application.env`).
+The above will load `application.env` file and append it to global object (`proccess.env` for Node and `window.env`
+for Browser).
 
 > For Node you also get sync option:
 > ```javascript
@@ -20,6 +20,15 @@ The above will load `application.env` file and append it to global object (`proc
 > const env = loadSync();
 > console.log(env === proccess.env); // true
 > ```
+
+All load variants takes two optional arguments. Here's how they look with their default values:
+```typescript
+function load(
+  path: string = 'application.env', // Path to a file
+  options: LoadOptions = {
+  failSilently: false, // Returns/appends an empty object on error instead of throwing it.
+}): Env {}
+```
 
 
 ## Behind the scenes

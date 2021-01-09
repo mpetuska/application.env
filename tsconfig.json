@@ -7,7 +7,7 @@
     "noEmitOnError": true,
     "declaration": true,
     "sourceMap": true,
-    "declarationMap": true
+    "declarationMap": true,
   },
   "exclude": [],
   "include": ["src"]

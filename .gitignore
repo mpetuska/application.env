@@ -6,8 +6,10 @@ node_modules/
 *.js
 *.d.ts
 *.map
+.commit
 
 .yarn/*
+!.eslintrc.js
 !.pnp.js
 !.yarn/cache
 !.yarn/releases
