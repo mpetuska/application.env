@@ -52,7 +52,7 @@ export const _appendEnv = (
 
 export const load = async (
   path: string = DEFAULT_PATH,
-  options: LoadOptions
+  options?: LoadOptions
 ): Promise<Env> => {
   let loader: undefined | EnvLoader = undefined;
   if (isBrowser && !isNode) {
