@@ -17,7 +17,8 @@ jobs:
         git config --global user.email "martynas.petuska@outlook.com";
         git config --global user.name "Martynas Petuška";
     - run: yarn version -i ${{ github.event.release.tag_name }}
-    - run: git add -u; git commit --amend -C HEAD --no-verify;
+    - run: git add -u; git commit --no-verify -m "Release ${{ github.event.release.tag_name }}";
+    - run: git tag -fa ${{ github.event.release.tag_name }} -m "Release ${{ github.event.release.tag_name }}"
     - name: GitHub Push
       uses: ad-m/github-push-action@v0.6.0
       with:
