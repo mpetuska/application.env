@@ -1,0 +1,41 @@
+{
+  "name": "application.env",
+  "version": "1.0.9",
+  "description": ".env file loader for node and browser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpetuska/application.env.git"
+  },
+  "main": "common.js",
+  "types": "common.d.ts",
+  "author": "Martynas Petuška",
+  "license": "Apache-2.0",
+  "scripts": {
+    "vscode": "yarn dlx @yarnpkg/pnpify --sdk vscode",
+    "build": "tsc",
+    "lint": "eslint \"src/**/*.ts?(x)\" --quiet --fix --no-error-on-unmatched-pattern",
+    "prepack": "yarn build"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/eslint": "^7",
+    "@types/eslint-plugin-prettier": "^3",
+    "@types/node": "^14.14.12",
+    "@types/prettier": "^2",
+    "@typescript-eslint/eslint-plugin": "^4.12.0",
+    "@typescript-eslint/parser": "^4.12.0",
+    "eslint": "^7.17.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^7.1.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.7",
+    "prettier": "^2.2.1",
+    "typescript": "^4.1.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn dedupe && yarn stage && yarn lint",
+      "post-commit": "git add -u; git commit --amend -C HEAD --no-verify"
+    }
+  }
+}
