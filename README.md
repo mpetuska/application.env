@@ -34,6 +34,21 @@ function load(
   }): Promise<Env> {}
 ```
 
+## TypeScript
+The module comes with it's own type declarations on both, public API and global scope extensions. It's also possible to declare your own named properties on loaded Env object via TS augmentation on `ApplicationEnv` namespace:
+```typescript
+declare global {
+  namespace ApplicationEnv {
+    interface Env {
+      MY_PROP_ONE?: string;
+      ANOTHER_REQUIRED_PROP: string;
+      ANOTHER_OPTIONAL_PROP: string;
+      NODE_ENV?: string;
+    }
+  }
+}
+```
+
 ## Behind the scenes
 
 * Node: the file is loaded from your file system.
