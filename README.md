@@ -1,3 +1,4 @@
+[![npm](https://img.shields.io/npm/v/application.env?logo=npm&style=flat-square)](https://www.npmjs.com/package/application.env)
 # application.env
 
 Small utility to load environment configurations that works for both, node and the browser.
