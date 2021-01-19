@@ -2,7 +2,7 @@ import fs from "fs";
 import { _appendEnv, EnvLoader } from "./common";
 import { defaultLoadOptions, LoadOptions } from "./LoadOptions";
 
-export const loadSync = (options: LoadOptions = {}): Env => {
+export const loadSync = (options: LoadOptions = {}): ApplicationEnv.Env => {
   const opt = { ...defaultLoadOptions, ...options };
   try {
     const dotenvStr = fs.readFileSync(opt.path, "utf-8");

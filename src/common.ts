@@ -1,6 +1,6 @@
 import { LoadOptions } from "./LoadOptions";
 
-export type EnvLoader = (options?: LoadOptions) => Promise<Env>;
+export type EnvLoader = (options?: LoadOptions) => Promise<ApplicationEnv.Env>;
 type GlobalObject = typeof window | typeof process;
 declare global {
   namespace ApplicationEnv {
@@ -8,32 +8,25 @@ declare global {
      * To be augmented by consumer projects
      */
     // eslint-disable-next-line no-unused-vars
-    interface Env {}
+    interface Env extends Record<string, string | undefined> {}
   }
-
-  type Env = Record<string, string | undefined> & ApplicationEnv.Env;
   // eslint-disable-next-line no-unused-vars
   interface Window {
-    env: Env;
+    env: ApplicationEnv.Env;
   }
 
+  // eslint-disable-next-line no-unused-vars
   namespace NodeJS {
     // eslint-disable-next-line no-unused-vars
-    interface Global extends Record<string, unknown> {
-      env: NodeJS.ProcessEnv & Env;
-    }
-    // eslint-disable-next-line no-unused-vars
-    interface Process {
-      env: NodeJS.ProcessEnv & Env;
-    }
+    interface ProcessEnv extends ApplicationEnv.Env {}
   }
 }
 
 const isNode = typeof window === "undefined";
 
-export const parseEnv = (dotEnvStr: string): Env => {
+export const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
   // Try parse envfile string
-  const result: Env = {};
+  const result: ApplicationEnv.Env = {};
   const lines = dotEnvStr.toString().split("\n");
   for (const line of lines) {
     const match = line.match(/^([^=:#]+?)[=:](.*)/);
@@ -48,9 +41,9 @@ export const parseEnv = (dotEnvStr: string): Env => {
 export const _appendEnv = (
   dotenvStr?: string,
   globalObj?: GlobalObject
-): Env => {
+): ApplicationEnv.Env => {
   const obj = dotenvStr ? parseEnv(dotenvStr) : undefined;
-  const env: Env = {
+  const env: ApplicationEnv.Env = {
     ...globalObj?.env,
     ...obj,
   };
@@ -60,7 +53,9 @@ export const _appendEnv = (
   return env;
 };
 
-export const load = async (options?: LoadOptions): Promise<Env> => {
+export const load = async (
+  options?: LoadOptions
+): Promise<ApplicationEnv.Env> => {
   let loader: undefined | EnvLoader;
   if (isNode) {
     console.debug("NodeJS runtime");
