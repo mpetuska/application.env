@@ -40,7 +40,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/recommended", "npm:1.0.1"],
             ["@types/eslint", "npm:7.2.6"],
             ["@types/eslint-plugin-prettier", "npm:3.1.0"],
-            ["@types/lodash.once", "npm:4.1.6"],
             ["@types/node", "npm:14.14.22"],
             ["@types/prettier", "npm:2.1.6"],
             ["@types/react", "npm:17.0.0"],
@@ -182,25 +181,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/@types-json-schema-npm-7.0.7-95fb8178d7-b9d2c509fa.zip/node_modules/@types/json-schema/",
           "packageDependencies": [
             ["@types/json-schema", "npm:7.0.7"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/lodash", [
-        ["npm:4.14.168", {
-          "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.168-2d65abe211-9a4e25f89f.zip/node_modules/@types/lodash/",
-          "packageDependencies": [
-            ["@types/lodash", "npm:4.14.168"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["@types/lodash.once", [
-        ["npm:4.1.6", {
-          "packageLocation": "./.yarn/cache/@types-lodash.once-npm-4.1.6-312f4b59a9-e9d4dd1ed0.zip/node_modules/@types/lodash.once/",
-          "packageDependencies": [
-            ["@types/lodash.once", "npm:4.1.6"],
-            ["@types/lodash", "npm:4.14.168"]
           ],
           "linkType": "HARD",
         }]
@@ -521,7 +501,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/recommended", "npm:1.0.1"],
             ["@types/eslint", "npm:7.2.6"],
             ["@types/eslint-plugin-prettier", "npm:3.1.0"],
-            ["@types/lodash.once", "npm:4.1.6"],
             ["@types/node", "npm:14.14.22"],
             ["@types/prettier", "npm:2.1.6"],
             ["@types/react", "npm:17.0.0"],

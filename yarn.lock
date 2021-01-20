@@ -117,22 +117,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/lodash.once@npm:^4":
-  version: 4.1.6
-  resolution: "@types/lodash.once@npm:4.1.6"
-  dependencies:
-    "@types/lodash": "*"
-  checksum: e9d4dd1ed08fc16297bde9bf1491e5efe5cc39e779f9199f17c85cd79b3fde9110938c4df1e22b075653c1b9920d1428db2eb3e5b855bcc328a1a590529340b2
-  languageName: node
-  linkType: hard
-
-"@types/lodash@npm:*":
-  version: 4.14.168
-  resolution: "@types/lodash@npm:4.14.168"
-  checksum: 9a4e25f89fc035b9f0388f1f7be85e5eff49f9e6db0d93432c9a89fce0916f8a89db4e8290415f7ea02de6b00d3573826378dcb655b7b2d20530a6e8d6dd6fd0
-  languageName: node
-  linkType: hard
-
 "@types/node@npm:^14.14.12":
   version: 14.14.22
   resolution: "@types/node@npm:14.14.22"
@@ -353,7 +337,6 @@ __metadata:
     "@tsconfig/recommended": ^1.0.1
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
-    "@types/lodash.once": ^4
     "@types/node": ^14.14.12
     "@types/prettier": ^2
     "@types/react": ^17
