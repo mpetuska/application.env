@@ -32,7 +32,7 @@ function load(
   options: LoadOptions = {
     path: string = 'application.env', // Path to a file
     failSilently: false, // Returns/appends an empty object on error instead of throwing it.
-  }): Promise<Env> {}
+  }): Promise<ApplicationEnv.Env> {}
 ```
 
 ## TypeScript
