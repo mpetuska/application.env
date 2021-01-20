@@ -51,7 +51,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:7.2.0"],
             ["eslint-plugin-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:3.3.1"],
             ["husky", "npm:4.3.8"],
-            ["lodash.once", "npm:4.1.1"],
             ["prettier", "npm:2.2.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
@@ -533,7 +532,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:7.2.0"],
             ["eslint-plugin-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:3.3.1"],
             ["husky", "npm:4.3.8"],
-            ["lodash.once", "npm:4.1.1"],
             ["prettier", "npm:2.2.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
@@ -1459,15 +1457,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/lodash-npm-4.17.20-c0db62021c-c62101d250.zip/node_modules/lodash/",
           "packageDependencies": [
             ["lodash", "npm:4.17.20"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["lodash.once", [
-        ["npm:4.1.1", {
-          "packageLocation": "./.yarn/cache/lodash.once-npm-4.1.1-d8ba329ead-236e00ca5f.zip/node_modules/lodash.once/",
-          "packageDependencies": [
-            ["lodash.once", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]

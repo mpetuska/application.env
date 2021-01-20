@@ -42,8 +42,5 @@
   },
   "peerdependencies": {
     "react": "^17.0.0"
-  },
-  "dependencies": {
-    "lodash.once": "^4.1.1"
   }
 }

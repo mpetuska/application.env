@@ -364,7 +364,6 @@ __metadata:
     eslint-config-prettier: ^7.1.0
     eslint-plugin-prettier: ^3.3.1
     husky: ^4.3.7
-    lodash.once: ^4.1.1
     prettier: ^2.2.1
     typescript: ^4.1.2
   languageName: unknown
@@ -1137,13 +1136,6 @@ __metadata:
   dependencies:
     p-locate: ^5.0.0
   checksum: 4c379638152e0e5fda9a8cc07005702f81fcb9899db0f66d691ac1e64193dea670af14e96c50f14d82d45959daa4c400cb712c158cffe22ae265bfc1b1e3a221
-  languageName: node
-  linkType: hard
-
-"lodash.once@npm:^4.1.1":
-  version: 4.1.1
-  resolution: "lodash.once@npm:4.1.1"
-  checksum: 236e00ca5f20304fab5b38aa3aedb034959153dae6edf33d7f9b00406ced8f24ed232a74f1200505d9049165ceea2ce1256199e1683b0a25e9de89091d4b13c2
   languageName: node
   linkType: hard
 

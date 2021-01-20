@@ -7,14 +7,22 @@ import React, {
 } from "react";
 import { parseEnv } from "./common";
 import { loadEnvFile } from "./browser";
-import once from "lodash.once";
 
-// once<T extends (...args: any) => any>(func: T): T;
 interface LoadOptions {
   path?: string;
 }
-// once<T extends (...args: any) => any>(func: T): T;
 
+function once<T extends (...args: any) => any>(func: T): T {
+  let n = 2;
+  let result: any;
+  return function (this: any, ...args: any) {
+    if (--n > 0) {
+      // eslint-disable-next-line no-invalid-this
+      result = func.apply(this, args);
+    }
+    return result;
+  } as T;
+}
 const createStateContext = once(<T,>() =>
   React.createContext<T | undefined>({} as any)
 );
