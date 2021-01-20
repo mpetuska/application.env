@@ -20,7 +20,7 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/eslint": "^7",
     "@types/eslint-plugin-prettier": "^3",
-    "@types/lodash": "^4",
+    "@types/lodash.once": "^4",
     "@types/node": "^14.14.12",
     "@types/prettier": "^2",
     "@types/react": "^17",
@@ -40,8 +40,10 @@
       "post-commit": "git add -u; git commit --amend -C HEAD --no-verify"
     }
   },
+  "peerdependencies": {
+    "react": "^17.0.0"
+  },
   "dependencies": {
-    "lodash": "^4.17.20",
-    "react": "^17.0.1"
+    "lodash.once": "^4.1.1"
   }
 }

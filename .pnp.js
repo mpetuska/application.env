@@ -40,7 +40,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/recommended", "npm:1.0.1"],
             ["@types/eslint", "npm:7.2.6"],
             ["@types/eslint-plugin-prettier", "npm:3.1.0"],
-            ["@types/lodash", "npm:4.14.168"],
+            ["@types/lodash.once", "npm:4.1.6"],
             ["@types/node", "npm:14.14.22"],
             ["@types/prettier", "npm:2.1.6"],
             ["@types/react", "npm:17.0.0"],
@@ -51,9 +51,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:7.2.0"],
             ["eslint-plugin-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:3.3.1"],
             ["husky", "npm:4.3.8"],
-            ["lodash", "npm:4.17.20"],
+            ["lodash.once", "npm:4.1.1"],
             ["prettier", "npm:2.2.1"],
-            ["react", "npm:17.0.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
@@ -192,6 +191,16 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         ["npm:4.14.168", {
           "packageLocation": "./.yarn/cache/@types-lodash-npm-4.14.168-2d65abe211-9a4e25f89f.zip/node_modules/@types/lodash/",
           "packageDependencies": [
+            ["@types/lodash", "npm:4.14.168"]
+          ],
+          "linkType": "HARD",
+        }]
+      ]],
+      ["@types/lodash.once", [
+        ["npm:4.1.6", {
+          "packageLocation": "./.yarn/cache/@types-lodash.once-npm-4.1.6-312f4b59a9-e9d4dd1ed0.zip/node_modules/@types/lodash.once/",
+          "packageDependencies": [
+            ["@types/lodash.once", "npm:4.1.6"],
             ["@types/lodash", "npm:4.14.168"]
           ],
           "linkType": "HARD",
@@ -513,7 +522,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["@tsconfig/recommended", "npm:1.0.1"],
             ["@types/eslint", "npm:7.2.6"],
             ["@types/eslint-plugin-prettier", "npm:3.1.0"],
-            ["@types/lodash", "npm:4.14.168"],
+            ["@types/lodash.once", "npm:4.1.6"],
             ["@types/node", "npm:14.14.22"],
             ["@types/prettier", "npm:2.1.6"],
             ["@types/react", "npm:17.0.0"],
@@ -524,9 +533,8 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
             ["eslint-config-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:7.2.0"],
             ["eslint-plugin-prettier", "virtual:a5f416ca98112569c13dc5d02a152a63f88dd97c2c4cee59d45c550b002ea86d61248eed84cffe1c7fb1531783480a7ca38c4cd63e13eb2a4e8a3feaead64df8#npm:3.3.1"],
             ["husky", "npm:4.3.8"],
-            ["lodash", "npm:4.17.20"],
+            ["lodash.once", "npm:4.1.1"],
             ["prettier", "npm:2.2.1"],
-            ["react", "npm:17.0.1"],
             ["typescript", "patch:typescript@npm%3A4.1.3#builtin<compat/typescript>::version=4.1.3&hash=cc6730"]
           ],
           "linkType": "SOFT",
@@ -1455,12 +1463,11 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "linkType": "HARD",
         }]
       ]],
-      ["loose-envify", [
-        ["npm:1.4.0", {
-          "packageLocation": "./.yarn/cache/loose-envify-npm-1.4.0-6307b72ccf-5c3b47bbe5.zip/node_modules/loose-envify/",
+      ["lodash.once", [
+        ["npm:4.1.1", {
+          "packageLocation": "./.yarn/cache/lodash.once-npm-4.1.1-d8ba329ead-236e00ca5f.zip/node_modules/lodash.once/",
           "packageDependencies": [
-            ["loose-envify", "npm:1.4.0"],
-            ["js-tokens", "npm:4.0.0"]
+            ["lodash.once", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -1519,15 +1526,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/natural-compare-npm-1.4.0-97b75b362d-2daf93d9bb.zip/node_modules/natural-compare/",
           "packageDependencies": [
             ["natural-compare", "npm:1.4.0"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["object-assign", [
-        ["npm:4.1.1", {
-          "packageLocation": "./.yarn/cache/object-assign-npm-4.1.1-1004ad6dec-66cf021898.zip/node_modules/object-assign/",
-          "packageDependencies": [
-            ["object-assign", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
@@ -1716,17 +1714,6 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./.yarn/cache/punycode-npm-2.1.1-26eb3e15cf-0202dc191c.zip/node_modules/punycode/",
           "packageDependencies": [
             ["punycode", "npm:2.1.1"]
-          ],
-          "linkType": "HARD",
-        }]
-      ]],
-      ["react", [
-        ["npm:17.0.1", {
-          "packageLocation": "./.yarn/cache/react-npm-17.0.1-98658812fc-a76d86ec97.zip/node_modules/react/",
-          "packageDependencies": [
-            ["react", "npm:17.0.1"],
-            ["loose-envify", "npm:1.4.0"],
-            ["object-assign", "npm:4.1.1"]
           ],
           "linkType": "HARD",
         }]
