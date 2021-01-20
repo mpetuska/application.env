@@ -3,7 +3,7 @@ import { defaultLoadOptions, LoadOptions } from "./LoadOptions";
 
 window.env = window.env || {};
 
-const loadEnvFile = async (path: string): Promise<string> => {
+export const loadEnvFile = async (path: string): Promise<string> => {
   const res = await fetch(path);
   const text = await res.text();
   if (text.startsWith("<")) {
