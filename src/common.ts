@@ -24,9 +24,9 @@ declare global {
 
 const isNode = typeof window === "undefined";
 
-export const parseEnv = <T>(dotEnvStr: string): T => {
+export const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
   // Try parse envfile string
-  const obj: any = {};
+  const obj: ApplicationEnv.Env = {};
   const lines = dotEnvStr.toString().split("\n");
   for (const line of lines) {
     const match = line.match(/^([^=:#]+?)[=:](.*)/);
@@ -59,10 +59,8 @@ export const load = async (
 ): Promise<ApplicationEnv.Env> => {
   let loader: undefined | EnvLoader;
   if (isNode) {
-    console.debug("NodeJS runtime");
     loader = (await import("./node")).load;
   } else {
-    console.debug("Browser runtime");
     loader = (await import("./browser")).load;
   }
   return loader ? loader(options) : {};

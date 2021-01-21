@@ -5,12 +5,8 @@ import React, {
   useEffect,
   PropsWithChildren,
 } from "react";
-import { parseEnv } from "./common";
-import { loadEnvFile } from "./browser";
-
-interface LoadOptions {
-  path?: string;
-}
+import loadEnv from "./browser";
+import { LoadOptions } from "./LoadOptions";
 
 function once<T extends (...args: any) => any>(func: T): T {
   let n = 2;
@@ -28,19 +24,11 @@ const createStateContext = once(<T,>() =>
 );
 export const useApplicationEnv = <T,>() => useContext(createStateContext<T>());
 
-const ApplicationEnvProvider = <T extends unknown>(
-  props: PropsWithChildren<LoadOptions> = { path: "/applcation.env" }
-) => {
-  const [config, setConfig] = useState<T>();
-  const StateContext = createStateContext<T>();
+const ApplicationEnvProvider = (props: PropsWithChildren<LoadOptions>) => {
+  const [config, setConfig] = useState<ApplicationEnv.Env>();
+  const StateContext = createStateContext<ApplicationEnv.Env>();
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await loadEnvFile(props.path || "/application.env");
-      const envObject = parseEnv<T>(result);
-      setConfig(envObject);
-    };
-
-    fetchData();
+    loadEnv(props).then((env) => setConfig(env));
   }, []);
   return (
     <StateContext.Provider value={config}>

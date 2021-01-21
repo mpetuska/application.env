@@ -3,12 +3,16 @@ export interface LoadOptions {
   failSilently?: boolean;
 }
 
+const commonDefaults: Partial<LoadOptions> = {
+  failSilently: true,
+};
+
 export const browserDefaultLoadOptions: Required<LoadOptions> = {
+  ...commonDefaults,
   path: "/application.env",
-  failSilently: false,
 };
 
 export const nodeDefaultLoadOptions: Required<LoadOptions> = {
+  ...commonDefaults,
   path: "application.env",
-  failSilently: false,
 };
