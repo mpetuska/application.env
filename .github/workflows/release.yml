@@ -5,53 +5,27 @@ on:
     types: [published]
 
 jobs:
-  setVersion:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: refs/heads/master
-    - run: echo '${{ toJSON(github.event) }}'
-    - run: |
-        git config --global user.email "martynas.petuska@outlook.com";
-        git config --global user.name "Martynas Petuška";
-    - run: yarn version -i ${{ github.event.release.tag_name }}
-    - run: git add -u; git commit --no-verify -m "Release ${{ github.event.release.tag_name }}";
-    - run: git tag -fa ${{ github.event.release.tag_name }} -m "Release ${{ github.event.release.tag_name }}"
-    - name: GitHub Push
-      uses: ad-m/github-push-action@v0.6.0
-      with:
-        github_token: ${{ github.token }}
-        branch: master
-        force: true
-        tags: true
   npm:
     runs-on: ubuntu-latest
-    needs: [ setVersion ]
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: refs/tags/${{ github.event.release.tag_name }}
     - uses: actions/setup-node@v1
       with:
         node-version: 14
     - run: sed -i -e 's/"@mpetuska\/application.env"/"application.env"/g' package.json
     - run: yarn
+    - run: yarn version -i ${{ github.event.release.tag_name }}
     - run: yarn npm publish
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
   gitHub:
     runs-on: ubuntu-latest
-    needs: [ setVersion ]
     steps:
-    - uses: actions/checkout@v2
-      with:
-        ref: refs/tags/${{ github.event.release.tag_name }}
     - uses: actions/setup-node@v1
       with:
         node-version: 14
     - run: sed -i -e 's/"application.env"/"@mpetuska\/application.env"/g' package.json
     - run: yarn
+    - run: yarn version -i ${{ github.event.release.tag_name }}
     - run: yarn npm publish
       env:
         NODE_AUTH_TOKEN: ${{ github.token }}
