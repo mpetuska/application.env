@@ -2,7 +2,7 @@
 [![npm](https://img.shields.io/npm/v/application.env?logo=npm&style=flat-square)](https://www.npmjs.com/package/application.env)
 # application.env
 
-Small utility to load environment configurations that works for both, node and the browser.
+Small utility to load environment configurations that works for both, node and the browser, including a react context helper for react apps.
 
 ## Usage
 
@@ -50,7 +50,41 @@ declare global {
 }
 ```
 
+## React
+This module exposes a react context provider and hook to consume the context in a child component
+
+```typescript 
+
+import ApplicationEnvProvider, { useApplicationEnv } from 'application.env/react';
+interface MyEnv {
+  MY_PROP_ONE?: string;
+  ANOTHER_REQUIRED_PROP: string;
+  ANOTHER_OPTIONAL_PROP: string;
+  NODE_ENV?: string;
+}
+const App: FC = (): JSX.Element => {
+  return (
+    <ApplicationEnvProvider<MyEnv> path="/application.env">
+      <Child>
+    </ApplicationEnvProvider>
+  );
+};
+
+const Child: FC = () : JSX.Element => {
+  const envVars = useApplicationEnv<MyEnv>();
+
+  return (<h1>{envVars.MY_PROP_ONE}</h1>)
+}
+
+export default App;
+
+
+
+
+```
+
 ## Behind the scenes
 
 * Node: the file is loaded from your file system.
 * Browser: the file is fetched from the same server that's serving HTML & JS files.
+* React: the file is fetched from the same server that's serving HTML & JS files.

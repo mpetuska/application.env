@@ -3,7 +3,12 @@ export interface LoadOptions {
   failSilently?: boolean;
 }
 
-export const defaultLoadOptions: Required<LoadOptions> = {
+export const browserDefaultLoadOptions: Required<LoadOptions> = {
+  path: "/application.env",
+  failSilently: false,
+};
+
+export const nodeDefaultLoadOptions: Required<LoadOptions> = {
   path: "application.env",
   failSilently: false,
 };

@@ -8,7 +8,8 @@
     "noEmitOnError": true,
     "declaration": true,
     "sourceMap": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "jsx": "react"
   },
   "exclude": [],
   "include": ["src"]
