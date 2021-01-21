@@ -9,10 +9,8 @@ node_modules/
 .commit
 
 .yarn/*
-!.eslintrc.js
-!.pnp.js
-!.yarn/cache
 !.yarn/releases
 !.yarn/plugins
 !.yarn/sdks
 !.yarn/versions
+.pnp.*
