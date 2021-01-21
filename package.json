@@ -13,7 +13,8 @@
   "scripts": {
     "vscode": "yarn dlx @yarnpkg/pnpify --sdk vscode",
     "build": "tsc",
-    "lint": "eslint \"src/**/*.ts?(x)\" --quiet --fix --no-error-on-unmatched-pattern",
+    "lint": "eslint \"src/**/*.ts?(x)\" --quiet --no-error-on-unmatched-pattern",
+    "lint:fix": "yarn lint --fix",
     "prepack": "yarn build"
   },
   "devDependencies": {
