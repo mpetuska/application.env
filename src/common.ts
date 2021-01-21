@@ -24,7 +24,7 @@ declare global {
 
 const isNode = typeof window === "undefined";
 
-export const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
+const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
   // Try parse envfile string
   const obj: ApplicationEnv.Env = {};
   const lines = dotEnvStr.toString().split("\n");
@@ -35,15 +35,14 @@ export const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
       obj[key] = match[2].trim();
     }
   }
-  const result: T = { ...obj };
-  return result;
+  return obj;
 };
 
 export const _appendEnv = (
   dotenvStr?: string,
   globalObj?: GlobalObject
 ): ApplicationEnv.Env => {
-  const obj = dotenvStr ? parseEnv<ApplicationEnv.Env>(dotenvStr) : undefined;
+  const obj = dotenvStr ? parseEnv(dotenvStr) : undefined;
   const env: ApplicationEnv.Env = {
     ...globalObj?.env,
     ...obj,
