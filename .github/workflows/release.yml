@@ -13,7 +13,9 @@ jobs:
         with:
           node-version: 14
       - run: sed -i -e 's/"@mpetuska\/application.env"/"application.env"/g' package.json
-      - run: sed -i -e 's/"1.0.0"/"${{ github.event.release.tag_name }}"/g' package.json
+      - run: sed -i -e "s/\"1.0.0\"/\"${VERSION//v}\"/g" package.json
+        env:
+          VERSION: ${{ github.event.release.tag_name }}
       - run: yarn
       - run: yarn npm publish
         env:
@@ -26,7 +28,9 @@ jobs:
         with:
           node-version: 14
       - run: sed -i -e 's/"application.env"/"@mpetuska\/application.env"/g' package.json
-      - run: sed -i -e 's/"1.0.0"/"${{ github.event.release.tag_name }}"/g' package.json
+      - run: sed -i -e "s/\"1.0.0\"/\"${VERSION//v}\"/g" package.json
+        env:
+          VERSION: ${{ github.event.release.tag_name }}
       - run: yarn
       - run: yarn npm publish
         env:
