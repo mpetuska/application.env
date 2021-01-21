@@ -51,36 +51,27 @@ declare global {
 ```
 
 ## React
-This module exposes a react context provider and hook to consume the context in a child component
+This module exposes a React context provider and hook to consume the context in a child component
 
 ```typescript 
 
 import ApplicationEnvProvider, { useApplicationEnv } from 'application.env/react';
-interface MyEnv {
-  MY_PROP_ONE?: string;
-  ANOTHER_REQUIRED_PROP: string;
-  ANOTHER_OPTIONAL_PROP: string;
-  NODE_ENV?: string;
-}
+
 const App: FC = (): JSX.Element => {
   return (
-    <ApplicationEnvProvider<MyEnv> path="/application.env">
+    <ApplicationEnvProvider path="/application.env">
       <Child>
     </ApplicationEnvProvider>
   );
 };
 
 const Child: FC = () : JSX.Element => {
-  const envVars = useApplicationEnv<MyEnv>();
+  const envVars = useApplicationEnv();
 
   return (<h1>{envVars.MY_PROP_ONE}</h1>)
 }
 
 export default App;
-
-
-
-
 ```
 
 ## Behind the scenes

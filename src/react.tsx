@@ -1,51 +1,42 @@
-/* eslint-disable require-jsdoc */
 import React, {
-  useContext,
-  useState,
-  useEffect,
   PropsWithChildren,
+  useContext,
+  useEffect,
+  useState
 } from "react";
-import { parseEnv } from "./common";
-import { loadEnvFile } from "./browser";
+import loadEnv from "./browser";
+import { LoadOptions } from "./LoadOptions";
 
-interface LoadOptions {
-  path?: string;
-}
+type ApplicationEnvContext = React.Context<ApplicationEnv.Env | undefined>;
+let applicationContext:
+  | React.Context<ApplicationEnv.Env | undefined>
+  | undefined;
+const createStateContext = (): ApplicationEnvContext => {
+  if (applicationContext) {
+    return applicationContext;
+  } else {
+    applicationContext = React.createContext<ApplicationEnv.Env | undefined>(
+      undefined
+    );
+    return applicationContext;
+  }
+};
+export const useApplicationEnv = (): ApplicationEnv.Env | undefined =>
+  useContext(createStateContext());
 
-function once<T extends (...args: any) => any>(func: T): T {
-  let n = 2;
-  let result: any;
-  return function (this: any, ...args: any) {
-    if (--n > 0) {
-      // eslint-disable-next-line no-invalid-this
-      result = func.apply(this, args);
-    }
-    return result;
-  } as T;
-}
-const createStateContext = once(<T,>() =>
-  React.createContext<T | undefined>({} as any)
-);
-export const useApplicationEnv = <T,>() => useContext(createStateContext<T>());
-
-const ApplicationEnvProvider = <T extends unknown>(
-  props: PropsWithChildren<LoadOptions> = { path: "/applcation.env" }
-) => {
-  const [config, setConfig] = useState<T>();
-  const StateContext = createStateContext<T>();
+const ApplicationEnvProvider: React.FC<PropsWithChildren<LoadOptions>> = ({
+  children,
+  ...props
+}) => {
+  const [config, setConfig] = useState<ApplicationEnv.Env>();
+  const StateContext = createStateContext();
   useEffect(() => {
-    const fetchData = async () => {
-      const result = await loadEnvFile(props.path || "/application.env");
-      const envObject = parseEnv<T>(result);
-      setConfig(envObject);
-    };
-
-    fetchData();
+    loadEnv(props)
+      .then((env) => setConfig(env))
+      .catch(console.error);
   }, []);
   return (
-    <StateContext.Provider value={config}>
-      {props.children}
-    </StateContext.Provider>
+    <StateContext.Provider value={config}>{children}</StateContext.Provider>
   );
 };
 
