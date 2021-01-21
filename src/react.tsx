@@ -2,7 +2,7 @@ import React, {
   PropsWithChildren,
   useContext,
   useEffect,
-  useState
+  useState,
 } from "react";
 import loadEnv from "./browser";
 import { LoadOptions } from "./LoadOptions";
