@@ -6,8 +6,9 @@ import React, {
 } from "react";
 import loadEnv from "./browser";
 import { LoadOptions } from "./LoadOptions";
+import type { Env } from "./common";
 
-type ApplicationEnvContext = React.Context<ApplicationEnv.Env | undefined>;
+type ApplicationEnvContext = React.Context<Env | undefined>;
 let applicationContext:
   | React.Context<ApplicationEnv.Env | undefined>
   | undefined;
@@ -15,9 +16,7 @@ const createStateContext = (): ApplicationEnvContext => {
   if (applicationContext) {
     return applicationContext;
   } else {
-    applicationContext = React.createContext<ApplicationEnv.Env | undefined>(
-      undefined
-    );
+    applicationContext = React.createContext<Env | undefined>(undefined);
     return applicationContext;
   }
 };
@@ -28,7 +27,7 @@ const ApplicationEnvProvider: React.FC<PropsWithChildren<LoadOptions>> = ({
   children,
   ...props
 }) => {
-  const [config, setConfig] = useState<ApplicationEnv.Env>();
+  const [config, setConfig] = useState<Env>();
   const StateContext = createStateContext();
   useEffect(() => {
     loadEnv(props)

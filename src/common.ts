@@ -1,9 +1,8 @@
 import { LoadOptions } from "./LoadOptions";
 
-export type EnvLoader = (options?: LoadOptions) => Promise<ApplicationEnv.Env>;
 type GlobalObject = typeof window | typeof process;
 declare global {
-  namespace ApplicationEnv {
+  export namespace ApplicationEnv {
     /**
      * To be augmented by consumer projects
      */
@@ -21,12 +20,14 @@ declare global {
     interface ProcessEnv extends ApplicationEnv.Env {}
   }
 }
+export type Env = ApplicationEnv.Env;
+export type EnvLoader = (options?: LoadOptions) => Promise<Env>;
 
 const isNode = typeof window === "undefined";
 
-const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
+const parseEnv = (dotEnvStr: string): Env => {
   // Try parse envfile string
-  const obj: ApplicationEnv.Env = {};
+  const obj: Env = {};
   const lines = dotEnvStr.toString().split("\n");
   for (const line of lines) {
     const match = line.match(/^([^=:#]+?)[=:](.*)/);
@@ -41,9 +42,9 @@ const parseEnv = (dotEnvStr: string): ApplicationEnv.Env => {
 export const _appendEnv = (
   dotenvStr?: string,
   globalObj?: GlobalObject
-): ApplicationEnv.Env => {
+): Env => {
   const obj = dotenvStr ? parseEnv(dotenvStr) : undefined;
-  const env: ApplicationEnv.Env = {
+  const env: Env = {
     ...globalObj?.env,
     ...obj,
   };
@@ -53,9 +54,7 @@ export const _appendEnv = (
   return env;
 };
 
-export const load = async (
-  options?: LoadOptions
-): Promise<ApplicationEnv.Env> => {
+export const load = async (options?: LoadOptions): Promise<Env> => {
   let loader: undefined | EnvLoader;
   if (isNode) {
     loader = (await import("./node")).load;

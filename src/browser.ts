@@ -1,5 +1,6 @@
 import { _appendEnv, EnvLoader } from "./common";
 import { browserDefaultLoadOptions, LoadOptions } from "./LoadOptions";
+import type { Env } from "./common";
 
 window.env = window.env || {};
 
@@ -13,7 +14,9 @@ export const loadEnvFile = async (path: string): Promise<string> => {
   }
 };
 
-export const load: EnvLoader = async (options: LoadOptions = {}) => {
+export const load: EnvLoader = async (
+  options: LoadOptions = {}
+): Promise<Env> => {
   const opt = { ...browserDefaultLoadOptions, ...options };
   try {
     const dotenvStr = await loadEnvFile(opt.path);
