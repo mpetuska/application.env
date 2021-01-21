@@ -8,24 +8,26 @@ jobs:
   npm:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14
-    - run: sed -i -e 's/"@mpetuska\/application.env"/"application.env"/g' package.json
-    - run: yarn
-    - run: yarn version -i ${{ github.event.release.tag_name }}
-    - run: yarn npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: sed -i -e 's/"@mpetuska\/application.env"/"application.env"/g' package.json
+      - run: yarn
+      - run: yarn version -i ${{ github.event.release.tag_name }}
+      - run: yarn npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
   gitHub:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 14
-    - run: sed -i -e 's/"application.env"/"@mpetuska\/application.env"/g' package.json
-    - run: yarn
-    - run: yarn version -i ${{ github.event.release.tag_name }}
-    - run: yarn npm publish
-      env:
-        NODE_AUTH_TOKEN: ${{ github.token }}
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14
+      - run: sed -i -e 's/"application.env"/"@mpetuska\/application.env"/g' package.json
+      - run: yarn
+      - run: yarn version -i ${{ github.event.release.tag_name }}
+      - run: yarn npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ github.token }}
