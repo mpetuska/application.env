@@ -43,7 +43,7 @@ All `load` functions also provide a way to validate loaded env before appending 
 interface Env {
   propOne: string;
   nonStringProperty: number;
-  optionalProperty?: string;
+  optionalProperty: string;
   criticalProperty: string;
 }
 
