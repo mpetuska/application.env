@@ -22,10 +22,7 @@ declare global {
   }
 }
 export type Env = ApplicationEnv.Env;
-export type EnvLoader = (
-  options?: LoadOptions,
-  validator?: ObjectValidator<Env>
-) => Promise<Env>;
+export type EnvLoader = (options?: LoadOptions) => Promise<Env>;
 
 const isNode = typeof window === "undefined";
 
@@ -58,7 +55,9 @@ export const _appendEnv = (
     if (!env[key]) {
       if (valid.default) {
         console.warn(
-          `Env variable [${key}] missing. Using provided default value.`
+          `Env variable [${key}] missing. Using provided default value. ${
+            valid.errorMessage ?? ""
+          }`
         );
         env[key] = valid.default;
       } else {
@@ -72,6 +71,9 @@ export const _appendEnv = (
           throw new Error(message);
         }
       }
+    } else if (valid.converter) {
+      const value = env[key];
+      env[key] = value && valid.converter(value);
     }
   }
   if (globalObj) {
@@ -80,17 +82,14 @@ export const _appendEnv = (
   return env;
 };
 
-export const load = async (
-  options?: LoadOptions,
-  validator?: ObjectValidator<Env>
-): Promise<Env> => {
+export const load = async (options?: LoadOptions): Promise<Env> => {
   let loader: undefined | EnvLoader;
   if (isNode) {
     loader = (await import("./node")).load;
   } else {
     loader = (await import("./browser")).load;
   }
-  return loader ? loader(options, validator) : {};
+  return loader ? loader(options) : {};
 };
 
 export default load;

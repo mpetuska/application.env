@@ -2,12 +2,8 @@ import fs from "fs";
 import type { Env } from "./common";
 import { _appendEnv, EnvLoader } from "./common";
 import { LoadOptions, nodeDefaultLoadOptions } from "./LoadOptions";
-import { ObjectValidator } from "./ObjectValidator";
 
-export const loadSync = (
-  options: LoadOptions = {},
-  validator?: ObjectValidator<Env>
-): Env => {
+export const loadSync = (options: LoadOptions = {}): Env => {
   const opt = { ...nodeDefaultLoadOptions, ...options };
   let dotenvStr: string | undefined;
   try {
@@ -19,12 +15,11 @@ export const loadSync = (
       throw e;
     }
   }
-  return _appendEnv(dotenvStr, process, validator);
+  return _appendEnv(dotenvStr, process, options.validator);
 };
 
 export const load: EnvLoader = async (
-  options: LoadOptions = {},
-  validator?: ObjectValidator<Env>
+  options: LoadOptions = {}
 ): Promise<Env> => {
   const opt = { ...nodeDefaultLoadOptions, ...options };
   let dotenvStr: string | undefined;
@@ -37,7 +32,7 @@ export const load: EnvLoader = async (
       throw e;
     }
   }
-  return _appendEnv(dotenvStr, process, validator);
+  return _appendEnv(dotenvStr, process, options.validator);
 };
 
 export default load;

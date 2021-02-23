@@ -26,11 +26,11 @@ export const useApplicationEnv = (): ApplicationEnv.Env | undefined =>
 
 const ApplicationEnvProvider: React.FC<
   PropsWithChildren<LoadOptions & { validator?: ObjectValidator<Env> }>
-> = ({ children, validator, ...props }) => {
+> = ({ children, ...props }) => {
   const [config, setConfig] = useState<Env>();
   const StateContext = createStateContext();
   useEffect(() => {
-    loadEnv(props, validator)
+    loadEnv(props)
       .then((env) => setConfig(env))
       .catch((it) => {
         if (props.failSilently) {

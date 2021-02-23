@@ -12,6 +12,7 @@ export type ValueValidator<T> = {
    * Only applicable for NodeJS.
    */
   critical?: boolean;
+  converter?: (value: string) => T;
 };
 
 export type ObjectValidator<T> = {

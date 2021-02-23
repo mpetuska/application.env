@@ -1,7 +1,6 @@
 import { _appendEnv, EnvLoader } from "./common";
 import { browserDefaultLoadOptions, LoadOptions } from "./LoadOptions";
 import type { Env } from "./common";
-import { ObjectValidator } from "./ObjectValidator";
 
 window.env = window.env || {};
 
@@ -16,13 +15,12 @@ export const loadEnvFile = async (path: string): Promise<string> => {
 };
 
 export const load: EnvLoader = async (
-  options: LoadOptions = {},
-  validator?: ObjectValidator<Env>
+  options: LoadOptions = {}
 ): Promise<Env> => {
   const opt = { ...browserDefaultLoadOptions, ...options };
   try {
     const dotenvStr = await loadEnvFile(opt.path);
-    return _appendEnv(dotenvStr, window);
+    return _appendEnv(dotenvStr, window, options.validator);
   } catch (e) {
     if (opt.failSilently) {
       return {};

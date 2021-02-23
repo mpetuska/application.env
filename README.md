@@ -30,9 +30,41 @@ All load variants takes an optional options argument. Here's how its fields look
 ```typescript
 function load(
   options: LoadOptions = {
-    path: string = 'application.env', // Path to a file
+    path: 'application.env', // Path to a file
     failSilently: false, // Returns/appends an empty object on error instead of throwing it.
+    validator: ObjectValidator<Env> // Environment validator (read bellow)
   }): Promise<ApplicationEnv.Env> {}
+```
+
+## Validation
+All `load` functions also provide a way to validate loaded env before appending it to the global objects via the second
+`validator` optional argument. It's basically an object describing the shape of your env object with exposed properties to handle missing values.
+```typescript
+interface Env {
+  propOne: string;
+  nonStringProperty: number;
+  optionalProperty?: string;
+  criticalProperty: string;
+}
+
+const validator: ObjectValidator<Env> = {
+  propOne: {
+    errorMessage: "No default provided, throwing an error",
+  },
+  nonStringProperty: {
+    default: 420,
+    converter: (value) => Number(value)
+  },
+  optionalProperty: {
+    default: "DEFAULT VALUE",
+  },
+  criticalProperty: {
+    critical: true,
+    errorMessage: "The application cannot function without this property. Terminating...",
+  },
+};
+
+load({validator})
 ```
 
 ## TypeScript
