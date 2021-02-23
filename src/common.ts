@@ -1,4 +1,5 @@
 import { LoadOptions } from "./LoadOptions";
+import { ObjectValidator } from "./ObjectValidator";
 
 type GlobalObject = typeof window | typeof process;
 declare global {
@@ -21,7 +22,10 @@ declare global {
   }
 }
 export type Env = ApplicationEnv.Env;
-export type EnvLoader = (options?: LoadOptions) => Promise<Env>;
+export type EnvLoader = (
+  options?: LoadOptions,
+  validator?: ObjectValidator<Env>
+) => Promise<Env>;
 
 const isNode = typeof window === "undefined";
 
@@ -41,27 +45,52 @@ const parseEnv = (dotEnvStr: string): Env => {
 
 export const _appendEnv = (
   dotenvStr?: string,
-  globalObj?: GlobalObject
+  globalObj?: GlobalObject,
+  validator?: ObjectValidator<Env>
 ): Env => {
   const obj = dotenvStr ? parseEnv(dotenvStr) : undefined;
   const env: Env = {
     ...globalObj?.env,
     ...obj,
   };
+
+  for (const [key, valid] of Object.entries(validator || {})) {
+    if (!env[key]) {
+      if (valid.default) {
+        console.warn(
+          `Env variable [${key}] missing. Using provided default value.`
+        );
+        env[key] = valid.default;
+      } else {
+        const message = `Env variable [${key}] missing. ${
+          valid.errorMessage ?? ""
+        }`;
+        if (valid.critical && globalObj === process) {
+          console.error(message);
+          process.exit(1);
+        } else {
+          throw new Error(message);
+        }
+      }
+    }
+  }
   if (globalObj) {
     globalObj.env = env;
   }
   return env;
 };
 
-export const load = async (options?: LoadOptions): Promise<Env> => {
+export const load = async (
+  options?: LoadOptions,
+  validator?: ObjectValidator<Env>
+): Promise<Env> => {
   let loader: undefined | EnvLoader;
   if (isNode) {
     loader = (await import("./node")).load;
   } else {
     loader = (await import("./browser")).load;
   }
-  return loader ? loader(options) : {};
+  return loader ? loader(options, validator) : {};
 };
 
 export default load;
