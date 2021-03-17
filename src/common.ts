@@ -8,7 +8,9 @@ declare global {
      * To be augmented by consumer projects
      */
     // eslint-disable-next-line no-unused-vars
-    interface Env extends Record<string, string | undefined> {}
+    interface Env
+      extends Record<string, string | undefined>,
+        Record<string, unknown> {}
   }
   // eslint-disable-next-line no-unused-vars
   interface Window {
