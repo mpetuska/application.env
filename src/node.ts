@@ -26,9 +26,7 @@ export const load: EnvLoader = async (
   try {
     dotenvStr = await fs.promises.readFile(opt.path, "utf-8");
   } catch (e) {
-    if (opt.failSilently) {
-      return {};
-    } else {
+    if (!opt.failSilently) {
       throw e;
     }
   }
