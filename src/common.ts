@@ -8,9 +8,7 @@ declare global {
      * To be augmented by consumer projects
      */
     // eslint-disable-next-line no-unused-vars
-    interface Env
-      extends Record<string, string | undefined>,
-        Record<string, unknown> {}
+    interface Env {}
   }
   // eslint-disable-next-line no-unused-vars
   interface Window {
@@ -19,6 +17,7 @@ declare global {
 
   // eslint-disable-next-line no-unused-vars
   namespace NodeJS {
+    // @ts-ignore
     // eslint-disable-next-line no-unused-vars
     interface ProcessEnv extends ApplicationEnv.Env {}
   }
@@ -36,6 +35,7 @@ const parseEnv = (dotEnvStr: string): Env => {
     const match = line.match(/^([^=:#]+?)[=:](.*)/);
     if (match) {
       const key = match[1].trim();
+      // @ts-ignore
       obj[key] = match[2].trim();
     }
   }
@@ -54,18 +54,24 @@ export const _appendEnv = (
   };
 
   for (const [key, valid] of Object.entries(validator || {})) {
+    // @ts-ignore
     if (!env[key]) {
+      // @ts-ignore
       if (valid.default) {
         console.warn(
           `Env variable [${key}] missing. Using provided default value. ${
+            // @ts-ignore
             valid.errorMessage ?? ""
           }`
         );
+        // @ts-ignore
         env[key] = valid.default;
       } else {
         const message = `Env variable [${key}] missing. ${
+          // @ts-ignore
           valid.errorMessage ?? ""
         }`;
+        // @ts-ignore
         if (valid.critical && globalObj === process) {
           console.error(message);
           process.exit(1);
@@ -73,9 +79,12 @@ export const _appendEnv = (
           throw new Error(message);
         }
       }
+      // @ts-ignore
     } else if (valid.converter) {
+      // @ts-ignore
       const value = env[key];
-      env[key] = value && valid.converter(value);
+      // @ts-ignore
+      env[key] = value && valid.converter(value as string);
     }
   }
   if (globalObj) {
