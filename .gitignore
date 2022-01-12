@@ -1,6 +1,14 @@
-build/
+.gradle/
 .idea/
 .vscode/
+build/
+out/
+dist/
+local.properties
+lint.xml
+*.hprof
+*.out
+*.log
 node_modules/
 *.tgz
 *.js
@@ -8,9 +16,9 @@ node_modules/
 *.map
 .commit
 
-.yarn/*
-!.yarn/releases
-!.yarn/plugins
-!.yarn/sdks
-!.yarn/versions
+application.env/application.env-npm/.yarn/*
+!application.env/application.env-npm/.yarn/releases
+!application.env/application.env-npm/.yarn/plugins
+!application.env/application.env-npm/.yarn/sdks
+!application.env/application.env-npm/.yarn/versions
 .pnp.*

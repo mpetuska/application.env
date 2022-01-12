@@ -1,0 +1,40 @@
+{
+  "name": "application.env",
+  "version": "1.0.0",
+  "description": ".env file loader for node and browser",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mpetuska/application.env.git"
+  },
+  "main": "common.js",
+  "types": "common.d.ts",
+  "author": "Martynas Petuška",
+  "license": "Apache-2.0",
+  "scripts": {
+    "vscode": "yarn dlx @yarnpkg/pnpify --sdk vscode",
+    "build": "tsc",
+    "lint": "eslint \"src/**/*.ts?(x)\" --quiet --no-error-on-unmatched-pattern",
+    "lint:fix": "yarn lint --fix",
+    "prepack": "yarn build"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.1",
+    "@types/eslint": "^8.2.2",
+    "@types/eslint-plugin-prettier": "^3.1.0",
+    "@types/node": "^14.18.5",
+    "@types/prettier": "^2.4.3",
+    "@types/react": "^17.0.38",
+    "@typescript-eslint/eslint-plugin": "^5.9.1",
+    "@typescript-eslint/parser": "^5.9.1",
+    "eslint": "^8.6.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.5.1",
+    "react": "^16 || ^17",
+    "typescript": "^4.1.2"
+  },
+  "optionalDependencies": {
+    "react": "^16 || ^17"
+  }
+}
