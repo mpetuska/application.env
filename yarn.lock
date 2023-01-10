@@ -395,7 +395,7 @@ __metadata:
     eslint: ^8.0.0
     eslint-config-google: ^0.14.0
     eslint-config-prettier: ^8.0.0
-    eslint-plugin-prettier: ^3.3.1
+    eslint-plugin-prettier: ^4.0.0
     husky: ^4.3.7
     prettier: ^2.2.1
     react: ^16 || ^17 || ^18.0.0
@@ -647,18 +647,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-prettier@npm:^3.3.1":
-  version: 3.3.1
-  resolution: "eslint-plugin-prettier@npm:3.3.1"
+"eslint-plugin-prettier@npm:^4.0.0":
+  version: 4.2.1
+  resolution: "eslint-plugin-prettier@npm:4.2.1"
   dependencies:
     prettier-linter-helpers: ^1.0.0
   peerDependencies:
-    eslint: ">=5.0.0"
-    prettier: ">=1.13.0"
+    eslint: ">=7.28.0"
+    prettier: ">=2.0.0"
   peerDependenciesMeta:
     eslint-config-prettier:
       optional: true
-  checksum: cf35b0f0e9ef30782fe82913db92f6874181723d77f0c4613f9d69c87069f73d0dc420ef850ebc844613c00a8e87eb9762a36b7d028334c5c7b091763118347b
+  checksum: ff1b4155f247f09e1560ec13981ea6f512e858af13b9378f9d80fb1fe9fa89d0ffbc031c1f8390492e4579e79c278a34f361f2a7d4ffd80e677b4b80afb96056
   languageName: node
   linkType: hard
 
