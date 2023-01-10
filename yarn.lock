@@ -117,10 +117,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.14.12":
-  version: 14.14.22
-  resolution: "@types/node@npm:14.14.22"
-  checksum: e46e32685b4d0261779c13c10ba3ff220cfa714b5c12f8f571fd52cc309546bdbc8ffc86cbad20559ad88e7b17e66fc51c98b067d8c3766597092c05df157b9b
+"@types/node@npm:^18.0.0":
+  version: 18.11.18
+  resolution: "@types/node@npm:18.11.18"
+  checksum: 6fefe7545aeff8ff19d9ac1c0434edf44a5a55fcbfdf2b7a2da69ccfdd06a7ba4fdebb6c797a7eedb707c5be729c6bbd0c967f2281e03e152dc87bdcd3e21c35
   languageName: node
   linkType: hard
 
@@ -145,13 +145,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^17":
-  version: 17.0.0
-  resolution: "@types/react@npm:17.0.0"
+"@types/react@npm:^18.0.0":
+  version: 18.0.26
+  resolution: "@types/react@npm:18.0.26"
   dependencies:
     "@types/prop-types": "*"
+    "@types/scheduler": "*"
     csstype: ^3.0.2
-  checksum: dcef2034b822a949c5528fa8fa3c64da654fdbb822bd8f0488c0084d84cadb8b90af68813a6c95153d4754079f50b1cab206552c7c20f6b67a26c3641383fe31
+  checksum: 0af548e4856686c9026570ce41b7033df6900d19c97efbeebbcc319b005c00f9d03fdb08de8ce46377f67b7b3f8ec2c7547e19b54d39a341db99d90ff9f0b941
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:*":
+  version: 0.16.2
+  resolution: "@types/scheduler@npm:0.16.2"
+  checksum: e78d1bb50ca9321a76826c0f5a5ed7f1b6e995597127993cad658bd18d7f7de4324cd7efdfd0140079ee212a05774bbbd95eecfdf72370d14023acb99b841a30
   languageName: node
   linkType: hard
 
@@ -337,9 +345,9 @@ __metadata:
     "@tsconfig/recommended": ^1.0.1
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
-    "@types/node": ^14.14.12
+    "@types/node": ^18.0.0
     "@types/prettier": ^2
-    "@types/react": ^17
+    "@types/react": ^18.0.0
     "@typescript-eslint/eslint-plugin": ^4.12.0
     "@typescript-eslint/parser": ^4.12.0
     eslint: ^7.17.0
