@@ -117,10 +117,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^14.14.12":
-  version: 14.14.22
-  resolution: "@types/node@npm:14.14.22"
-  checksum: e46e32685b4d0261779c13c10ba3ff220cfa714b5c12f8f571fd52cc309546bdbc8ffc86cbad20559ad88e7b17e66fc51c98b067d8c3766597092c05df157b9b
+"@types/node@npm:^18.0.0":
+  version: 18.11.18
+  resolution: "@types/node@npm:18.11.18"
+  checksum: 6fefe7545aeff8ff19d9ac1c0434edf44a5a55fcbfdf2b7a2da69ccfdd06a7ba4fdebb6c797a7eedb707c5be729c6bbd0c967f2281e03e152dc87bdcd3e21c35
   languageName: node
   linkType: hard
 
@@ -337,7 +337,7 @@ __metadata:
     "@tsconfig/recommended": ^1.0.1
     "@types/eslint": ^7
     "@types/eslint-plugin-prettier": ^3
-    "@types/node": ^14.14.12
+    "@types/node": ^18.0.0
     "@types/prettier": ^2
     "@types/react": ^17
     "@typescript-eslint/eslint-plugin": ^4.12.0

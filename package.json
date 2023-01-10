@@ -21,7 +21,7 @@
     "@tsconfig/recommended": "^1.0.1",
     "@types/eslint": "^7",
     "@types/eslint-plugin-prettier": "^3",
-    "@types/node": "^14.14.12",
+    "@types/node": "^18.0.0",
     "@types/prettier": "^2",
     "@types/react": "^17",
     "@typescript-eslint/eslint-plugin": "^4.12.0",
