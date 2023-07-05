@@ -387,7 +387,7 @@ __metadata:
     eslint-config-prettier: ^8.0.0
     eslint-plugin-prettier: ^4.0.0
     husky: ^8.0.0
-    prettier: ^2.2.1
+    prettier: ^3.0.0
     react: ^16 || ^17 || ^18.0.0
     typescript: ^4.1.2
   languageName: unknown
@@ -1235,12 +1235,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^2.2.1":
-  version: 2.2.1
-  resolution: "prettier@npm:2.2.1"
+"prettier@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "prettier@npm:3.0.0"
   bin:
-    prettier: bin-prettier.js
-  checksum: 92c6c9f4b87eba1f28466edee57dd18c80d00b858edda77d46d1950d20e6e302b68ee255fc91133ba931e63c4577b5ae30da194d9626a8f3c0177778b91bf056
+    prettier: bin/prettier.cjs
+  checksum: 4e7b2674a825ae3b2cc4c41524d5474e4bed6bf1f00f3684d37da5974795a20cb60d6e02141662b0daf557aac6b3f3f4dfa1658d22df12f171a3838aa2845ecb
   languageName: node
   linkType: hard
 
